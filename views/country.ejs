@@ -1,0 +1,59 @@
+<div class="country-details">
+    <div class="country-header">
+        <img src="<%= country.flag %>" alt="<%= country.name %>" class="country-flag">
+        <div class="country-title">
+            <h1>
+                <%= country.name %>
+            </h1>
+            <p class="continent"><i class="fas fa-map-marker-alt"></i>
+                <%= country.continent %>
+            </p>
+        </div>
+    </div>
+
+    <div class="country-stats">
+        <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3>Население</h3>
+            <p>
+                <%= country.population %>
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-language"></i>
+            <h3>Языки</h3>
+            <ul>
+                <% country.languages.forEach(lang=> { %>
+                    <li>
+                        <%= lang %>
+                    </li>
+                    <% }); %>
+            </ul>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-landmark"></i>
+            <h3>Столица</h3>
+            <p>
+                <%= country.capital %>
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-expand"></i>
+            <h3>Площадь</h3>
+            <p>
+                <%= country.area %>
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <i class="fas fa-money-bill-wave"></i>
+            <h3>Валюта</h3>
+            <p>
+                <%= country.currency %>
+            </p>
+        </div>
+    </div>
+</div>

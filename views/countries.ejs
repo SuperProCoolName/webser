@@ -1,0 +1,53 @@
+<script>
+    document.getElementById('continentFilter').addEventListener('change', function () {
+        const selectedContinent = this.value;
+        const countryItems = document.querySelectorAll('.country-list-item');
+
+        countryItems.forEach(item => {
+            const continent = item.querySelector('.country-list-info p:last-child').textContent;
+            if (!selectedContinent || continent.includes(selectedContinent)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<div class="countries-page">
+    <div class="countries-header">
+        <h1>Все страны</h1>
+        <div class="filters">
+            <form action="/countries" method="GET" class="filter-form">
+                <select name="region" onchange="this.form.submit()">
+                    <option value="">Все регионы</option>
+                    <option value="Europe" <%=regionFilter==='Europe' ? 'selected' : '' %>>Европа</option>
+                    <option value="Asia" <%=regionFilter==='Asia' ? 'selected' : '' %>>Азия</option>
+                    <option value="Africa" <%=regionFilter==='Africa' ? 'selected' : '' %>>Африка</option>
+                    <option value="Americas" <%=regionFilter==='Americas' ? 'selected' : '' %>>Америка</option>
+                    <option value="Oceania" <%=regionFilter==='Oceania' ? 'selected' : '' %>>Океания</option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="countries-list">
+        <% countries.sort((a, b)=> a.name.localeCompare(b.name)).forEach(country => { %>
+            <div class="country-list-item">
+                <img src="<%= country.flag %>" alt="<%= country.name %>">
+                <div class="country-list-info">
+                    <h3>
+                        <%= country.name %>
+                    </h3>
+                    <p><i class="fas fa-users"></i>
+                        <%= country.population %>
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <%= country.continent %>
+                    </p>
+                </div>
+                <a href="/country/<%= country.id %>" class="btn">Подробнее</a>
+            </div>
+            <% }); %>
+    </div>
+</div>

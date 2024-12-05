@@ -1,0 +1,37 @@
+<div class="hero">
+    <h1>Откройте для себя мир</h1>
+    <p>Исследуйте страны, их культуру и особенности</p>
+</div>
+
+<section class="popular-countries">
+    <h2>Случайные страны</h2>
+    <div class="countries-grid">
+        <% popularCountries.forEach(country=> { %>
+            <div class="country-card">
+                <div class="card-image">
+                    <img src="<%= country.flag %>" alt="<%= country.name %>">
+                </div>
+                <div class="card-content">
+                    <h3>
+                        <%= country.name %>
+                    </h3>
+                    <div class="country-info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <span>
+                                <%= country.population %>
+                            </span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-landmark"></i>
+                            <span>
+                                <%= country.capital %>
+                            </span>
+                        </div>
+                    </div>
+                    <a href="/country/<%= country.id %>" class="btn">Подробнее</a>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+</section>
